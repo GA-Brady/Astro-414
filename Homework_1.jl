@@ -2,7 +2,7 @@ using CSV, DataFrames, Plots
 
 function main()
     data_dir = "data/"
-    figure_dir = "figures/"
+    figure_dir = ".homework_1/figures/"
     color_data_path = data_dir * "A414-F25_color-T.dat"
 
     # Read with auto-detected whitespace separator
@@ -24,13 +24,14 @@ function main()
         T, BV;
         xscale = :log10,
         xticks = (tick_vals, tick_labels),
+        xlims = (2000, 42000),
         xflip = true,
         xlabel = "Temperature (K)",
         ylabel = "B–V Color",
         ylims = (-0.5, 2.0),
         yticks = (y_tick_vals, y_tick_labels),
-        yflip = true,
-        title = "Hertzsprung–Russell Diagram",
+        yflip = false,
+        title = "(B-V) Diagram",
         color = :black,
         legend = false,
         markersize = 4
@@ -46,10 +47,11 @@ function main()
         T[2:end-1], dBV[2:end-1].*1000;
         xscale = :log10,
         xticks = (tick_vals, tick_labels),
+        xlims = (2000, 42000),
         xflip = true,
         xlabel = "Temperature (K)",
         ylabel = "d(B–V)/dt ⋅ 1000",
-        yflip = true,
+        yflip = false,
         title = "Backwards Difference of B-V",
         color = :black,
         legend = false,
